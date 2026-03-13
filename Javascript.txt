@@ -1,0 +1,366 @@
+Ringkasan Dasar JavaScript (Tabel)
+
+Konsep			Penjelasan						Contoh Kode
+
+Variabel		Digunakan untuk menyimpan data. Dideklarasikan		let name = "John";
+			dengan let, const, atau var.
+ 
+Tipe Data		Jenis data yang bisa disimpan: string, 
+			number, boolean, null, undefined, object, symbol.	let age = 25;
+ 
+String			Kumpulan karakter, diapit tanda kutip (" atau ').	let greeting = "Hello";
+ 
+Number			Angka (bulat atau desimal).				let price = 19.99;
+ 
+Boolean			Nilai true atau false.					let isAdult = true;
+ 
+Array			Kumpulan nilai yang diurutkan, diapit [ ].		let fruits = ["apple", "banana"];
+ 
+Object			Kumpulan pasangan key-value.				let person = { name: "Alice", age: 30 };
+ 
+Function		Blok kode yang bisa dipanggil kembali.			function greet() { console.log("Hello"); }
+ 
+Fungsi Panah 		Versi pendek dari fungsi, lebih ringkas.		const add = (a, b) => a + b;
+(Arrow Function)			
+	
+Perulangan (Loop)	for, while, do...while untuk menjalankan		for (let i = 0; i < 5; i++) { console.log(i); }
+			kode berulang kali.
+ 
+Kondisional (if-else)	Mengeksekusi kode berdasarkan kondisi.			if (age >= 18) { console.log("Adult"); }
+ 
+Switch			Alternatif untuk banyak kondisi if.			switch (day) { case 1: ... }
+ 
+DOM Manipulation	Mengubah halaman web secara dinamis			document.getElementById("demo").innerHTML = "Hello";
+ 
+Event Handling		Menangani interaksi pengguna (klik, ketik, dll).	button.addEventListener("click", function() { ... });
+ 
+Template Literals	String dengan ekspresi JavaScript, menggunakan `.	let message = `Hello ${name}`;
+ 
+Null & Undefined	null = nilai kosong eksplisit, 				let x = null; let y;
+			undefined = belum didefinisikan.
+
+Type Coercion		Konversi otomatis tipe data (misal: 5 + "2" → "52").	console.log(5 + "2"); // "52"
+ 
+Hoisting		Deklarasi variabel dan fungsi dinaikkan 		console.log(x); var x = 5;
+			ke atas (hanya untuk var dan function).
+	
+Strict Mode		Mode yang membatasi fitur berbahaya untuk 		"use strict";
+			memastikan kode lebih aman.
+	
+
+✔ Gunakan let atau const daripada var (lebih modern dan menghindari hoisting yang membingungkan).
+✔ const untuk nilai yang tidak berubah, let untuk yang bisa berubah.
+✔ Gunakan === (strict equality) daripada == untuk menghindari type coercion yang tidak diinginkan.
+
+
+Ringkasan Dasar JavaScript (Teks) 
+
+1. Variabel
+Dipakai untuk menyimpan data. Gunakan let, const, atau var.   
+
+    let = bisa diubah nilainya.  
+    const = tidak bisa diubah (konstanta).  
+    var = lebih lama, tidak disarankan untuk kode modern.
+    Contoh:
+     
+
+javascript
+ 
+     
+ 
+ 
+1
+2
+3
+let name = "John";  
+const age = 25;  
+var city = "Jakarta";  
+ 
+ 
+
+2. Tipe Data   
+
+    string = teks, diapit kutip (" atau ').
+    Contoh: "Hello", 'JavaScript'  
+    number = angka, bulat atau desimal.
+    Contoh: 42, 3.14  
+    boolean = true atau false.
+    Contoh: true, false  
+    null = nilai kosong eksplisit.  
+    undefined = nilai belum didefinisikan.  
+    object = kumpulan data (misalnya array, function, objek).  
+    symbol = tipe data unik (jarang digunakan di dasar).
+     
+
+3. Array
+Kumpulan nilai yang diurutkan, diapit [ ].
+Contoh:   
+javascript
+ 
+     
+ 
+ 
+1
+2
+let fruits = ["apple", "banana", "orange"];  
+console.log(fruits[0]); // "apple"  
+ 
+ 
+
+4. Object
+Kumpulan pasangan key-value.
+Contoh:   
+javascript
+ 
+     
+ 
+ 
+1
+2
+3
+4
+5
+6
+⌄
+let person = {  
+  name: "Alice",  
+  age: 30,  
+  city: "Bandung"  
+};  
+console.log(person.name); // "Alice"  
+ 
+ 
+
+5. Function
+Blok kode yang bisa dipanggil kembali.
+Contoh:   
+javascript
+ 
+     
+ 
+ 
+1
+2
+3
+4
+⌄
+function greet() {  
+  console.log("Hello!");  
+}  
+greet(); // panggil fungsi  
+ 
+ 
+
+6. Arrow Function (Fungsi Panah)
+Versi pendek dari fungsi.
+Contoh:   
+javascript
+ 
+     
+ 
+ 
+1
+2
+const add = (a, b) => a + b;  
+console.log(add(2, 3)); // 5  
+ 
+ 
+
+7. Perulangan (Loop)   
+
+    for: untuk perulangan berulang.
+    Contoh:  
+    javascript
+     
+         
+     
+     
+    1
+    2
+    3
+    ⌄
+    for (let i = 0; i < 5; i++) {  
+      console.log(i);  
+    }  
+     
+     
+    while: lakukan selama kondisi benar.
+    Contoh:  
+    javascript
+     
+         
+     
+     
+    1
+    2
+    3
+    4
+    5
+    ⌄
+    let i = 0;  
+    while (i < 5) {  
+      console.log(i);  
+      i++;  
+    }  
+     
+     
+    do...while: lakukan sekali, lalu cek kondisi.
+     
+
+8. Kondisional (if-else)
+Jalankan kode berdasarkan kondisi.
+Contoh:   
+javascript
+ 
+     
+ 
+ 
+1
+2
+3
+4
+5
+⌄
+⌄
+if (age >= 18) {  
+  console.log("Dewasa");  
+} else {  
+  console.log("Anak-anak");  
+}  
+ 
+ 
+
+9. Switch
+Pilihan kondisi banyak.
+Contoh:   
+javascript
+ 
+     
+ 
+ 
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+⌄
+switch (day) {  
+  case 1:  
+    console.log("Senin");  
+    break;  
+  case 2:  
+    console.log("Selasa");  
+    break;  
+  default:  
+    console.log("Hari tidak dikenal");  
+}  
+ 
+ 
+
+10. Template Literals
+String dengan ekspresi JavaScript, pakai ` `.
+Contoh:   
+javascript
+ 
+     
+ 
+ 
+1
+2
+3
+let name = "John";  
+let message = `Halo, ${name}!`;  
+console.log(message); // "Halo, John!"  
+ 
+ 
+
+11. DOM Manipulation
+Mengubah halaman web secara dinamis.
+Contoh:   
+javascript
+ 
+     
+ 
+ 
+1
+document.getElementById("demo").innerHTML = "Selamat datang!";  
+ 
+ 
+
+12. Event Handling
+Menangani interaksi pengguna.
+Contoh:   
+javascript
+ 
+     
+ 
+ 
+1
+2
+3
+⌄
+button.addEventListener("click", function() {  
+  alert("Diklik!");  
+});  
+ 
+ 
+
+13. Null & Undefined   
+
+    null = nilai kosong yang disengaja.  
+    undefined = variabel dideklarasikan tapi belum diisi.
+     
+
+14. Type Coercion
+Konversi otomatis tipe data.
+Contoh:   
+javascript
+ 
+     
+ 
+ 
+1
+console.log(5 + "2"); // "52" (number + string = string)  
+ 
+ 
+
+15. Hoisting
+Deklarasi variabel dan fungsi dinaikkan ke atas.
+Hanya berlaku untuk var dan function.
+Contoh:   
+javascript
+ 
+     
+ 
+ 
+1
+2
+console.log(x); // undefined (var x = 5; dinaikkan)  
+var x = 5;  
+ 
+ 
+
+16. Strict Mode
+Mode untuk memastikan kode lebih aman dan ketat.
+Ditulis di awal file:   
+javascript
+ 
+     
+ 
+ 
+1
+"use strict";  
+ 
+ 
+✅ Tips Penting: 
+
+    Gunakan let dan const daripada var.  
+    Gunakan === (strict equality) daripada ==.  
+    Gunakan console.log() untuk debugging.  
+    Gunakan // untuk komentar satu baris, /* */ untuk komentar banyak baris.
+     
