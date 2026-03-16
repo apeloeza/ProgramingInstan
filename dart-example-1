@@ -1,0 +1,256 @@
+ Langkah-Langkah Pembuatan 
+✅ 1. Buat Proyek Flutter 
+bash
+ 
+flutter create diary_app
+cd diary_app
+ 
+ 
+✅ 2. Tambahkan依赖 Hive di pubspec.yaml 
+
+Buka file pubspec.yaml dan tambahkan dependency: 
+yaml
+ 
+dependencies:
+  flutter:
+    sdk: flutter
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+ 
+ 
+
+Kemudian jalankan: 
+bash
+ 
+flutter pub get
+ 
+ 
+✅ 3. Buat Model Catatan (Note) 
+
+Buat file note.dart di folder lib/models/: 
+dart
+ 
+    
+// lib/models/note.dart
+import 'package:hive/hive.dart';
+
+part 'note.g.dart';
+
+@HiveType(typeId: 0)
+class Note extends HiveObject {
+  @HiveField(0)
+  final String title;
+
+  @HiveField(1)
+  final String content;
+
+  @HiveField(2)
+  final DateTime createdAt;
+
+  Note(this.title, this.content, this.createdAt);
+}
+ 
+ 
+
+    ⚠️ Catatan: Anda perlu menjalankan flutter pub run build_runner build untuk generate file note.g.dart.
+    Tambahkan dependency di pubspec.yaml: 
+    yaml
+
+    dev_dependencies:
+      build_runner: ^2.3.3
+      hive_generator: ^2.0.1
+     
+     
+     
+
+✅ 4. Inisialisasi Hive di main.dart 
+dart
+ 
+   
+// lib/main.dart
+import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'screens/home_screen.dart';
+
+void main() async {
+  // Inisialisasi Hive
+  await Hive.initFlutter();
+  Hive.registerAdapter(NoteAdapter()); // Register adapter
+  runApp(const MyApp());
+}
+ 
+ 
+✅ 5. Buat Layar Utama (Home Screen) 
+
+Buat file home_screen.dart di lib/screens/: 
+dart
+ 
+     
+
+// lib/screens/home_screen.dart
+              return Card(
+                margin: const EdgeInsets.all(8),
+                child: ListTile(
+                  title: Text(note.title),
+                  subtitle: Text(note.content),
+                  trailing: IconButton(
+                    icon: const Icon(Icons.delete),
+                    onPressed: () {
+                      box.deleteAt(index);
+                    },
+                  ),
+                ),
+              );
+            },
+          );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _showAddNoteDialog(context);
+        },
+        child: const Icon(Icons.add),
+      ),
+    );
+  }
+
+  void _showAddNoteDialog(BuildContext context) {
+    final titleController = TextEditingController();
+    final contentController = TextEditingController();
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text("Tambah Catatan"),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                controller: titleController,
+                decoration: const InputDecoration(hintText: "Judul"),
+              ),
+              const SizedBox(height: 10),
+              TextField(
+                controller: contentController,
+                decoration: const InputDecoration(hintText: "Isi catatan"),
+                maxLines: 5,
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text("Batal"),
+            ),
+            TextButton(
+              onPressed: () {
+                final note = Note(
+                  titleController.text,
+                  contentController.text,
+                  DateTime.now(),
+                );
+                Hive.box<Note>('notes').add(note);
+                Navigator.pop(context);
+              },
+              child: const Text("Simpan"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+}
+ 
+ 
+✅ 6. Jalankan Aplikasi 
+bash
+ 
+     
+ 
+ 
+1
+flutter run
+ 
+ 
+🧪 Fitur yang Disediakan 
+Fitur
+ 
+	
+Deskripsi
+ 
+ 
+✅ Tambah Catatan
+	
+Klik tombol + untuk menambahkan catatan baru
+ 
+✅ Lihat Daftar
+	
+Semua catatan muncul di halaman utama
+ 
+✅ Hapus Catatan
+	
+Klik ikon delete di setiap catatan
+ 
+✅ Simpan Lokal
+	
+Data tersimpan di perangkat (tidak perlu internet)
+ 
+✅ Waktu Otomatis
+	
+Tanggal dan waktu catatan disimpan otomatis
+ 
+ 
+ 
+📦 Struktur Folder 
+ 
+diary_app/
+├── lib/
+│   ├── main.dart
+│   ├── screens/
+│   │   └── home_screen.dart
+│   └── models/
+│       └── note.dart
+ 
+ 
+🧠 Penjelasan Teknis 
+
+    Hive menyimpan data dalam file lokal (tidak perlu server).
+    @HiveType dan @HiveField digunakan untuk mengatur struktur data.
+    Box<Note> adalah container untuk menyimpan objek Note.
+    ValueListenableBuilder memperbarui UI secara otomatis saat data berubah.
+     
+
+💡 Tips Tambahan 
+
+    Gunakan flutter_launcher_icons untuk membuat ikon aplikasi.
+    Tambahkan flutter_localizations untuk bahasa lokal.
+    Simpan data di Hive untuk aplikasi offline.
+     
+
+📦 Cara Menginstall & Menjalankan 
+
+     Pastikan Flutter sudah terinstall.
+     Jalankan flutter pub get di folder proyek.
+     Jalankan flutter pub run build_runner build (untuk generate note.g.dart).
+     Jalankan flutter run.
+     
+
+🎉 Hasil Akhir 
+
+Aplikasi ini akan memungkinkan kamu: 
+
+    Mencatat harian harian secara lokal.
+    Akses kapan saja tanpa koneksi internet.
+    Tidak perlu database eksternal seperti MySQL atau Firebase.
+     
+
+📎 Bonus: Tambahkan Fitur (Opsional) 
+
+    Edit catatan  
+    Filter berdasarkan tanggal  
+    Pencarian catatan  
+    Kategori (misal: Happy, Sad, Work)
+     
