@@ -1,0 +1,95 @@
+📚 Ringkasan Dasar Dart (Tabel) 
+Konsep			Penjelasan					Contoh Kode
+  
+Bahasa Pemrograman	Bahasa yang digunakan untuk pengembangan	void main() { print("Hello Dart!"); }
+			aplikasi Flutter.
+	
+Variabel		Digunakan untuk menyimpan data. Dideklarasikan	var name = "John";
+			dengan var, final, atau const.			final age = 25;
+									const pi = 3.14;
+	
+Tipe Data		Jenis data yang bisa disimpan: int, double,	int number = 10;
+			String, bool, List, Map, Set.			String text = "Hello";
+									bool isTrue = true;
+
+	
+String			Kumpulan karakter, diapit tanda			String greeting = "Halo";
+			kutip (" atau ').
+	
+
+Number			Angka: int (bulat), double (desimal).		int age = 25;
+									double price = 9.99;
+ 
+Boolean			Nilai true atau false.				bool isActive = true;
+ 
+List (Array)		Kumpulan nilai yang diurutkan, diapit [ ].	List<String> fruits = ["apple", "banana"];
+ 
+Map (Objek)		Kumpulan pasangan key-value.			Map<String, int> ages = {"Alice": 25, "Bob": 30};
+ 
+Set			Kumpulan nilai unik (tidak ada duplikat).	Set<int> numbers = {1, 2, 3};
+ 
+Function		Blok kode yang bisa dipanggil.			void greet() { print("Hello"); }
+ 
+Fungsi Panah		Versi pendek dari fungsi.			int add(int a, int b) => a + b;
+(Arrow Function)
+	
+Kondisional (if-else)	Mengeksekusi kode berdasarkan kondisi.		if (age >= 18) { print("Dewasa"); } else { print("Anak"); }
+ 
+Switch			Pilihan kondisi banyak.				switch (day) { case 1: print("Senin"); break; }
+ 
+Perulangan (Loop)	for, while, do...while.				for (int i = 0; i < 5; i++) { print(i); }
+ 
+Null Safety		Dart mendukung null safety untuk 		String? name = null;
+			mencegah error. ? untuk nullable, 		print(name!);
+			! untuk non-null.
+	
+Future & Async/Await	Digunakan untuk operasi asinkron 		Future<void> fetchData() async { ... }
+			(misalnya: API, file, delay).
+	
+Class & Object		OOP: kelas untuk membuat objek.			class Person { String name; Person(this.name); }
+ 
+Inheritance		Klas turunan dari kelas lain.			class Student extends Person { ... }
+ 
+Constructor		Metode khusus untuk membuat objek.		Person(this.name);
+ 
+Getters & Setters	Metode untuk mengakses dan mengubah properti.	int get age => _age;
+									set age(int value) => _age = value;
+ 
+Extension		Menambahkan metode ke kelas yang sudah ada.	extension StringExtension on String { String capitalize() => ... }
+ 	
+Nullish Coalescing	?? = jika nilai null, gunakan nilai default.	String name = name ?? "Anonymous";
+ 
+Nullish Assignment	??= = jika variabel null, assign nilai.		name ??= "Default";
+ 
+Spread Operator		... = menyalin semua elemen dari		List<int> all = [...list1, ...list2];
+			list atau map.					List<int> all = [...list1, ...list2];
+ 
+Conditional Expression	? : = ekspresi kondisional.			String status = age >= 18 ? "Dewasa" : "Anak";
+ 
+
+✅ Tips Penting: 
+
+    Gunakan var untuk variabel yang bisa diubah, final untuk yang tidak bisa diubah setelah didefinisikan, dan const untuk nilai yang tetap.
+    Dart mendukung null safety secara default (dari Dart 2.12).
+    Gunakan async dan await untuk operasi yang membutuhkan waktu (seperti fetch data).
+    Gunakan List, Map, Set untuk struktur data.
+    Gunakan extension untuk memperluas fungsi kelas bawaan.
+     
+✅ Contoh Kode Sederhana
+
+void main() {
+  var name = "Alice";
+  int age = 25;
+  bool isStudent = true;
+
+  List<String> hobbies = ["reading", "coding"];
+  Map<String, int> scores = {"math": 90, "science": 85};
+
+  print("Hello, $name! You are $age years old.");
+  print("Hobbies: ${hobbies.join(", ")}");
+}
+
+✅ Catatan:
+Dart sangat mirip dengan JavaScript dan C#.
+Digunakan secara luas di Flutter untuk pengembangan aplikasi mobile.
+Mendukung OOP, functional programming, dan async programming.
